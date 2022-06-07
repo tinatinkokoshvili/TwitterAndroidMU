@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
@@ -28,6 +30,8 @@ public class TimelineActivity extends AppCompatActivity {
 
     public static final String TAG = "TimelineActivity";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,19 @@ public class TimelineActivity extends AppCompatActivity {
         rvTweets.setLayoutManager(new LinearLayoutManager(this)); // set LayoutManager
         rvTweets.setAdapter(adapter); // set the adapter
         populateHomeTimeline();
+
+        Button logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TwitterApp.getRestClient(TimelineActivity.this).clearAccessToken();
+                // finish();
+                Intent i = new Intent(TimelineActivity.this, LoginActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -69,14 +86,15 @@ public class TimelineActivity extends AppCompatActivity {
         });
     }
 
-    public void onLogout() {
-        TwitterApp.getRestClient(this).clearAccessToken();
-        finish();
+
+//    public void onLogoutButton(View view) {
+//        TwitterApp.getRestClient(this).clearAccessToken();
+//       // finish();
 //        Intent i = new Intent(this, LoginActivity.class);
 //        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 //        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //        startActivity(i);
-    }
+//    }
 
 
 }
