@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -181,6 +182,16 @@ public class TimelineActivity extends AppCompatActivity {
 //        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //        startActivity(i);
 //    }
+
+
+//        <Button
+//    android:id="@+id/logoutButton"
+//    android:layout_width="wrap_content"
+//    android:layout_height="wrap_content"
+//    android:layout_marginStart="304dp"
+//    android:text="Logout"
+//    app:layout_constraintStart_toStartOf="parent"
+//    tools:layout_editor_absoluteY="-8dp" />
 
 
 }

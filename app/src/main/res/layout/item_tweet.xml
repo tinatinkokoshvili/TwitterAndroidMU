@@ -15,6 +15,15 @@
         tools:layout_editor_absoluteY="13dp"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <ImageView
+        android:id="@+id/ivFixedProfileImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="13dp"
+        tools:srcCompat="@drawable/ic_vector_person_stroke" />
+
     <TextView
         android:id="@+id/tvScreenName"
         android:layout_width="wrap_content"
@@ -98,5 +107,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivMedia"
         app:srcCompat="@drawable/ic_vector_heart" />
+
+    <TextView
+        android:id="@+id/tvRetweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMedia"
+        tools:text="1304" />
+
+    <TextView
+        android:id="@+id/tvHeart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="264dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMedia"
+        tools:text="1524" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

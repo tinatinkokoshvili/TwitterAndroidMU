@@ -19,6 +19,8 @@ public class Tweet {
     public String createdAt;
     public User user;
     public String mediaUrl;
+    public int retweet_count;
+    public int favorite_count;
 
     private static final int SECOND_MILLIS = 1000;
     private static final int MINUTE_MILLIS = 60 * SECOND_MILLIS;
@@ -39,6 +41,8 @@ public class Tweet {
         } else {
             tweet.mediaUrl = null;
         }
+        tweet.retweet_count = jsonObject.getInt("retweet_count");
+        tweet.favorite_count = jsonObject.getInt("favorite_count");
         return tweet;
     }
 

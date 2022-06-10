@@ -1,9 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,18 +68,22 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivProfileImage;
+        ImageView ivFixedProfileImage;
         TextView tvBody;
         TextView tvScreenName;
         ImageView ivMedia;
         TextView tvTime;
         ImageView ivRetweet;
         ImageView ivRetweetStroke;
+        TextView tvRetweet;
         ImageView ivHeartStroke;
         ImageView ivHeart;
+        TextView tvHeart;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
+            ivFixedProfileImage = itemView.findViewById(R.id.ivFixedProfileImage);
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             ivMedia = itemView.findViewById(R.id.ivMedia);
@@ -91,19 +92,27 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             ivRetweetStroke = itemView.findViewById(R.id.ivRetweetStroke);
             ivHeartStroke = itemView.findViewById(R.id.ivHeartStroke);
             ivHeart = itemView.findViewById(R.id.ivHeart);
+            tvRetweet = itemView.findViewById(R.id.tvRetweet);
+            tvHeart = itemView.findViewById(R.id.tvHeart);
         }
 
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
             tvTime.setText(tweet.getRelativeTimeAgo(tweet.createdAt));
-            Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+            //Check if user has profile image
+            if (tweet.user.profileImageUrl == null) {
+                ivFixedProfileImage.setVisibility(View.VISIBLE);
+            } else {
+                Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
+            }
             // Check visibility and load the images
             if (tweet.mediaUrl != null) {
                 ivMedia.setVisibility(View.VISIBLE);
                 Glide.with(context).load(tweet.mediaUrl).into(ivMedia);
             } else {
                 ivMedia.setVisibility(View.GONE);
+
             }
          //   Log.i("retweet", ivRetweet.toString());
             ivRetweetStroke.setOnClickListener(new View.OnClickListener() {
@@ -112,16 +121,24 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                     Log.i("retweet", "Retweet Clicked");
                     ivRetweetStroke.setVisibility(View.GONE);
                     ivRetweet.setVisibility(View.VISIBLE);
+                    tweet.retweet_count++;
+                    tvRetweet.setText(Integer.toString(tweet.retweet_count));
                 }
             });
+            tvRetweet.setText(Integer.toString(tweet.retweet_count));
             ivHeartStroke.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.i("retweet", "Retweet Clicked");
                     ivHeartStroke.setVisibility(View.GONE);
                     ivHeart.setVisibility(View.VISIBLE);
+                    tweet.favorite_count++;
+                    tvHeart.setText(Integer.toString(tweet.favorite_count));
                 }
             });
+            tvHeart.setText(Integer.toString(tweet.favorite_count));
+
+
 //            Glide.with(context).load(R.drawable.ic_vector_retweet).into(ivRetweet);
 
         }
