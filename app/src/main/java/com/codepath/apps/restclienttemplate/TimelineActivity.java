@@ -80,18 +80,18 @@ public class TimelineActivity extends AppCompatActivity {
         populateHomeTimeline();
 
 
-        Button logoutButton = findViewById(R.id.logoutButton);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TwitterApp.getRestClient(TimelineActivity.this).clearAccessToken();
-                // finish();
-                Intent i = new Intent(TimelineActivity.this, LoginActivity.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(i);
-            }
-        });
+//        Button logoutButton = findViewById(R.id.logoutButton);
+//        logoutButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                TwitterApp.getRestClient(TimelineActivity.this).clearAccessToken();
+//                // finish();
+//                Intent i = new Intent(TimelineActivity.this, LoginActivity.class);
+//                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(i);
+//            }
+//        });
     }
 
     @Override
@@ -107,6 +107,14 @@ public class TimelineActivity extends AppCompatActivity {
             // Navigate to the compose activity
             Intent intent = new Intent(this, ComposeActivity.class);
             startActivityForResult(intent, REQUEST_CODE);
+        }
+        if (item.getItemId() == R.id.logoutButton) {
+            TwitterApp.getRestClient(TimelineActivity.this).clearAccessToken();
+            // finish();
+            Intent i = new Intent(TimelineActivity.this, LoginActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
         }
         return true;
     }

@@ -23,14 +23,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="304dp"
-        android:text="Logout"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="-8dp" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

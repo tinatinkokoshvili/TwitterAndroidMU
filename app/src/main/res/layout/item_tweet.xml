@@ -67,6 +67,16 @@
         tools:text="1 hr" />
 
     <ImageView
+        android:id="@+id/ivCommentStroke"
+        android:layout_width="22dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMedia"
+        app:srcCompat="@drawable/ic_vector_messages_stroke" />
+
+    <ImageView
         android:id="@+id/ivRetweetStroke"
         android:layout_width="22dp"
         android:layout_height="23dp"
