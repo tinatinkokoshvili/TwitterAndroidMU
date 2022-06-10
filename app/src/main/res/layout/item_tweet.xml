@@ -4,16 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:paddingBottom="3dp">
-
-    <ImageView
-        android:id="@+id/ivProfileImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="13dp"
-        tools:srcCompat="@tools:sample/avatars" />
+    android:layout_margin="8dp"
+    android:paddingBottom="6dp">
 
     <ImageView
         android:id="@+id/ivFixedProfileImage"
@@ -24,44 +16,53 @@
         tools:layout_editor_absoluteY="13dp"
         tools:srcCompat="@drawable/ic_vector_person_stroke" />
 
+
     <TextView
-        android:id="@+id/tvScreenName"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:text="TextView"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
         tools:layout_editor_absoluteY="13dp"
-        tools:text="tinakokoshvili" />
+        tools:text="Tina Kokoshvili" />
 
     <TextView
         android:id="@+id/tvBody"
-        android:layout_width="wrap_content"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
-        app:layout_constraintTop_toBottomOf="@+id/tvScreenName"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
         tools:text="I am so cool!" />
 
-    <ImageView
+
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/ivMedia"
         android:layout_width="250dp"
-        android:layout_height="182dp"
+        android:layout_height="221dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="2dp"
         android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
         app:layout_constraintTop_toBottomOf="@+id/tvBody"
+        app:riv_corner_radius="10dp"
+        app:riv_mutate_background="true"
+        app:riv_oval="false"
+        app:riv_tile_mode="repeat"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/tvScreenName"
         tools:layout_editor_absoluteY="13dp"
         tools:text="1 hr" />
@@ -137,5 +138,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivMedia"
         tools:text="1524" />
+
+    <TextView
+        android:id="@+id/tvScreenName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/tvName"
+        tools:layout_editor_absoluteY="13dp"
+        tools:text="\@tinakokoshvili" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/ivProfileImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:riv_corner_radius="25dp"
+        app:riv_mutate_background="true"
+        app:riv_oval="false"
+        app:riv_tile_mode="repeat"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="13dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvReplyCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:text="42"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/ivCommentStroke"
+        app:layout_constraintTop_toBottomOf="@+id/ivMedia" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

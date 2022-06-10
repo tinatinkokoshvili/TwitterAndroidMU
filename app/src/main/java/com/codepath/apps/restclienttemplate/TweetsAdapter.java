@@ -26,7 +26,6 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         this.tweets = tweets;
     }
 
-
     // For each row, inflate the layout
     @NonNull
     @Override
@@ -38,38 +37,30 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     // Bind values based on the position of the element
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // Get the data at position
         Tweet tweet = tweets.get(position);
-        // Bind the tweet with view holder
         holder.bind(tweet);
     }
-
 
     @Override
     public int getItemCount() {
         return tweets.size();
     }
 
-    // Clean all elements of the recycler
     public void clear() {
         tweets.clear();
         notifyDataSetChanged();
     }
 
-    // Add a list of items
     public void addAll(List<Tweet> list) {
         tweets.addAll(list);
         notifyDataSetChanged();
     }
 
-
-
-    //Define a Viewholder
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         ImageView ivProfileImage;
         ImageView ivFixedProfileImage;
         TextView tvBody;
+        TextView tvName;
         TextView tvScreenName;
         ImageView ivMedia;
         TextView tvTime;
@@ -79,12 +70,14 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView ivHeartStroke;
         ImageView ivHeart;
         TextView tvHeart;
+        TextView tvReplyCount;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             ivFixedProfileImage = itemView.findViewById(R.id.ivFixedProfileImage);
             tvBody = itemView.findViewById(R.id.tvBody);
+            tvName = itemView.findViewById(R.id.tvName);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             ivMedia = itemView.findViewById(R.id.ivMedia);
             tvTime = itemView.findViewById(R.id.tvTime);
@@ -94,12 +87,15 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             ivHeart = itemView.findViewById(R.id.ivHeart);
             tvRetweet = itemView.findViewById(R.id.tvRetweet);
             tvHeart = itemView.findViewById(R.id.tvHeart);
+            tvReplyCount = itemView.findViewById(R.id.tvReplyCount);
         }
 
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
+            tvName.setText(tweet.user.name);
             tvScreenName.setText(tweet.user.screenName);
             tvTime.setText(tweet.getRelativeTimeAgo(tweet.createdAt));
+            tvReplyCount.setText("42");
             //Check if user has profile image
             if (tweet.user.profileImageUrl == null) {
                 ivFixedProfileImage.setVisibility(View.VISIBLE);
@@ -112,9 +108,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 Glide.with(context).load(tweet.mediaUrl).into(ivMedia);
             } else {
                 ivMedia.setVisibility(View.GONE);
-
             }
-         //   Log.i("retweet", ivRetweet.toString());
+
             ivRetweetStroke.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -137,10 +132,6 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 }
             });
             tvHeart.setText(Integer.toString(tweet.favorite_count));
-
-
-//            Glide.with(context).load(R.drawable.ic_vector_retweet).into(ivRetweet);
-
         }
     }
 }

@@ -38,8 +38,6 @@ public class ComposeActivity extends AppCompatActivity {
 
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
-
-        // Set a click listener on button
         btnTweet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,9 +63,8 @@ public class ComposeActivity extends AppCompatActivity {
                         try {
                             Tweet tweet = Tweet.fromJson(json.jsonObject);
                             Log.i(TAG, "Published tweet says: " + tweet.body);
-                            Intent intent = new Intent();   //Empty intent to pass the tweet back to parent
+                            Intent intent = new Intent();
                             intent.putExtra("tweet", Parcels.wrap(tweet));
-                            // set result code and bundle data for response
                             setResult(RESULT_OK, intent);
                             // close activity, pass the data to parent
                             finish();
@@ -84,6 +81,5 @@ public class ComposeActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
 }
