@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -34,11 +35,23 @@ public class TimelineActivity extends AppCompatActivity {
     RecyclerView rvTweets;
     List<Tweet> tweets;
     TweetsAdapter adapter;
+    MenuItem miActionProgressItem;
+
+
 
     public static final String TAG = "TimelineActivity";
     private final int REQUEST_CODE = 20;
 
     private SwipeRefreshLayout swipeContainer;
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Store instance of the menu item containing progress
+        miActionProgressItem = menu.findItem(R.id.miActionProgress);
+
+        // Return to finish
+        return super.onPrepareOptionsMenu(menu);
+    }
 
 
     @Override
@@ -64,6 +77,7 @@ public class TimelineActivity extends AppCompatActivity {
         rvTweets.setLayoutManager(new LinearLayoutManager(this)); // set LayoutManager
         rvTweets.setAdapter(adapter); // set the adapter
         populateHomeTimeline();
+
 
         Button logoutButton = findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(new View.OnClickListener() {
@@ -110,10 +124,14 @@ public class TimelineActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
 
-
     }
 
+
     private void populateHomeTimeline() {
+        //Log.i("Progress", miActionProgressItem.toString());
+        if (miActionProgressItem != null) {
+            showProgressBar();
+        }
         client.getHomeTimeline(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
@@ -128,17 +146,32 @@ public class TimelineActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     Log.e(TAG, "Json exception", e);
                 }
-
+                if (miActionProgressItem != null) {
+                    hideProgressBar();
+                }
             }
 
             @Override
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
                 Log.e(TAG, response, throwable);
                 Log.e(TAG, "onFailure!", throwable);
+//                hideProgressBar();
             }
         });
+
     }
 
+
+
+    public void showProgressBar() {
+        // Show progress item
+        miActionProgressItem.setVisible(true);
+    }
+
+    public void hideProgressBar() {
+        // Hide progress item
+        miActionProgressItem.setVisible(false);
+    }
 
 //    public void onLogoutButton(View view) {
 //        TwitterApp.getRestClient(this).clearAccessToken();

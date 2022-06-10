@@ -33,7 +33,7 @@ public class ComposeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose);
-
+        Log.i(TAG, "InComposeActivity");
         client = TwitterApp.getRestClient(this);
 
         etCompose = findViewById(R.id.etCompose);

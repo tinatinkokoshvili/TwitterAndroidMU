@@ -1,6 +1,9 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +75,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvScreenName;
         ImageView ivMedia;
         TextView tvTime;
+        ImageView ivRetweet;
+        ImageView ivRetweetStroke;
+        ImageView ivHeartStroke;
+        ImageView ivHeart;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +87,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             ivMedia = itemView.findViewById(R.id.ivMedia);
             tvTime = itemView.findViewById(R.id.tvTime);
+            ivRetweet = itemView.findViewById(R.id.ivRetweet);
+            ivRetweetStroke = itemView.findViewById(R.id.ivRetweetStroke);
+            ivHeartStroke = itemView.findViewById(R.id.ivHeartStroke);
+            ivHeart = itemView.findViewById(R.id.ivHeart);
         }
 
         public void bind(Tweet tweet) {
@@ -94,6 +105,24 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             } else {
                 ivMedia.setVisibility(View.GONE);
             }
+         //   Log.i("retweet", ivRetweet.toString());
+            ivRetweetStroke.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("retweet", "Retweet Clicked");
+                    ivRetweetStroke.setVisibility(View.GONE);
+                    ivRetweet.setVisibility(View.VISIBLE);
+                }
+            });
+            ivHeartStroke.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("retweet", "Retweet Clicked");
+                    ivHeartStroke.setVisibility(View.GONE);
+                    ivHeart.setVisibility(View.VISIBLE);
+                }
+            });
+//            Glide.with(context).load(R.drawable.ic_vector_retweet).into(ivRetweet);
 
         }
     }
