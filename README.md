@@ -42,21 +42,21 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 * [X] List anything else that you can get done to improve the app functionality!
-If user clicks heart under the tweet, it becomes a full heart, and the number displayed next to it increases by 1 instantly.
-If user clicks retweet under the tweet, it becomes a bold retweet icon, and the number displayed next to it increases by 1 instantly.
-Rounded the corners of profile image and the media in the tweet.
-If user does not have a profile picture, fixed profile image will be displayed.
-The logout button is moved to menu as a menu item.
-Added icons for composing tweet, heart, reply, retweet.
-Implemented the character count when writing a new tweet.
-Infinite scrolling also works after refreshing.
+* If user clicks heart under the tweet, it becomes a full heart, and the number displayed next to it increases by 1 instantly.
+* If user clicks retweet under the tweet, it becomes a bold retweet icon, and the number displayed next to it increases by 1 instantly.
+* Rounded the corners of profile image and the media in the tweet.
+* If user does not have a profile picture, fixed profile image will be displayed.
+* The logout button is moved to menu as a menu item.
+* Added icons for composing tweet, heart, reply, retweet.
+* Implemented the character count when writing a new tweet.
+* Infinite scrolling also works after refreshing.
 
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-![Gif Crashed](TwitterVideoWalkthrough.gif)
+![Gif Crashed](App/TwitterVideoWalkthrough.gif)
 
 
 ## Notes
