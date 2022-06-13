@@ -56,7 +56,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![Gif Crashed](app/TwitterVideoWalkthrough.gif)
+![Gif Crashed](app/VideoWalkthroughTwitter.gif)
 
 
 ## Notes
